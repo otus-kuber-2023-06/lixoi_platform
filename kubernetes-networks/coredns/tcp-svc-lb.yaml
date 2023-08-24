@@ -4,15 +4,15 @@ metadata:
   name: dns-service-tcp
   namespace: default
   annotations:
-    metallb.universe.tf/allow-shared-ip: "key-to-share-10.110.193.207"
+    metallb.universe.tf/allow-shared-ip: "key-to-share-172.17.255.10"
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.110.193.207
+  loadBalancerIP: 172.17.255.10
   ports:
     - name: dnstcp
       protocol: TCP
       port: 53
       targetPort: 53
   selector:
-    app: dns
+    app: web
 

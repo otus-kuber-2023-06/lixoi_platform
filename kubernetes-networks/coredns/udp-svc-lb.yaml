@@ -4,10 +4,10 @@ metadata:
   name: dns-service-udp
   namespace: default
   annotations:
-    metallb.universe.tf/allow-shared-ip: "key-to-share-10.110.193.207"
+    metallb.universe.tf/allow-shared-ip: "key-to-share-172.17.255.10"
 spec:
   type: LoadBalancer
-  loadBalancerIP: 10.110.193.207
+  loadBalancerIP: 172.17.255.10
   ports:
     - name: dnsudp
       protocol: UDP

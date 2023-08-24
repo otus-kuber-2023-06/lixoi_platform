@@ -10,7 +10,7 @@ spec:
     type: RollingUpdate
     rollingUpdate:
       maxSurge: 100%
-      maxUnavailable: 0%  
+      maxUnavailable: 33%  
   selector:
     matchLabels:
       app: web
@@ -33,10 +33,27 @@ spec:
           volumeMounts:
             - name: app
               mountPath: /app
-          
+          env:
+            - name: PORT
+              value: "8080"
+            - name: PRODUCT_CATALOG_SERVICE_ADDR
+              value: "productcatalogservice:3550"
+            - name: CURRENCY_SERVICE_ADDR
+              value: "currencyservice:7000"
+            - name: CART_SERVICE_ADDR
+              value: "cartservice:7070"
+            - name: RECOMMENDATION_SERVICE_ADDR
+              value: "recommendationservice:8080"
+            - name: SHIPPING_SERVICE_ADDR
+              value: "shippingservice:50051"
+            - name: CHECKOUT_SERVICE_ADDR
+              value: "checkoutservice:5050"
+            - name: AD_SERVICE_ADDR
+              value: "adservice:9555"  
       initContainers:
         - name: init
-          image: busybox:1.31.0
+          image: busybox:1.36.0
+          #command: ['sh', '-c', 'echo "<!DOCTYPE html><html><head><title>Заголовок</title></head><body>"Hello World!"</body></html>" > /app/index.html']
           command: ['sh', '-c', 'wget -O- https://tinyurl.com/otus-k8s-intro | sh']
           volumeMounts:
             - name: app
