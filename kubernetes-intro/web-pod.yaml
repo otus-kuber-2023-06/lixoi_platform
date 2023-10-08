@@ -27,7 +27,11 @@ spec:
       - name: CHECKOUT_SERVICE_ADDR
         value: "checkoutservice:5050"
       - name: AD_SERVICE_ADDR
+<<<<<<< HEAD
         value: "adservice:9555"  
+=======
+        value: "adservice:9555"    
+>>>>>>> 99e07ec5fa08e838bc984654c286e62810bd506f
   initContainers:
     - name: init
       image: busybox:1.31.0

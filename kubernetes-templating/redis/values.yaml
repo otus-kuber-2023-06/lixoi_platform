@@ -1,0 +1,6 @@
+image:
+  tag: alpine
+
+service:
+  targetPort: 6379
+  port: 6379
