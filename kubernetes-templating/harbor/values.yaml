@@ -1,0 +1,32 @@
+expose:
+  type: ingress
+  tls:
+    enabled: true
+    certSource: auto
+    auto:
+      # The common name used to generate the certificate, it's necessary
+      # when the type isn't "ingress"
+      commonName: ""
+    secret:
+      # The name of secret which contains keys named:
+      # "tls.crt" - the certificate
+      # "tls.key" - the private key
+      secretName: ""
+  ingress:
+    hosts:
+      core: harbor.158.160.47.148.nip.io
+    controller: default
+    kubeVersionOverride: ""
+    className: ""
+    annotations:
+      ingress.kubernetes.io/ssl-redirect: "true"
+      ingress.kubernetes.io/proxy-body-size: "0"
+      nginx.ingress.kubernetes.io/ssl-redirect: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: "0"
+      cert-manager.io/cluster-issuer: "letsencrypt-production"
+      kubernetes.io/ingress.class: nginx
+    harbor:
+      # harbor ingress-specific annotations
+      annotations: {}
+      # harbor ingress-specific labels
+      labels: {}
