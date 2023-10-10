@@ -9,20 +9,20 @@ metadata:
     nginx.ingress.kubernetes.io/canary-weight: "33"
 spec:
   rules:
-    - http:
-        paths:
-          - path: /web
-            pathType: Prefix
-            backend:
-              service:
-                name: web-svc
-                port:
-                  number: 8000
-          - path: /dashboard
-            pathType: Prefix
-            backend:
-              service:
-                name: kubernetes-dashboard-web
-                port:
-                  number: 8000
+  - http:
+    paths:
+    - path: /web
+      pathType: Prefix
+      backend:
+        service:
+          name: web-svc
+          port:
+            number: 8000
+    - path: /dashboard
+      pathType: Prefix
+      backend:
+        service:
+          name: kubernetes-dashboard-web
+          port:
+            number: 8000
 
